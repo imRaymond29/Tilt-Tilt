@@ -1,23 +1,4 @@
-/***************************
-////////////////////////////
-//      TILT TILT         //
-//                        //
-//        SE 101          //
-//       Fall 2015        //
-////////////////////////////
-*
-* A collaborative project by:
-* Raymond Lam                       20610319
-* Dane Michael George Nespoli       20632911
-* Tariq Aziz                        20611728
-* Sun Jack Chen                     20617473
-* Pascal Nguyen                     20618092
-*
-* OLED TEMPLATE CODE COURTESY OF KENNETH SINDER *
-***************************/ 
 
-//Imports all helper functions
-//Courtesy of Kenneth Sinder
 #include "functions.h" // Energia will compile the functions.cpp file for us
 
 /* ------------------------------------------------------------ */
@@ -27,355 +8,92 @@
 const unsigned int bitmapHeight = 6;  // The height of the bitmap
 const unsigned int bitmapWidth = 6;   // The width of the bitmap
 
-//Declaration of bit maps of letters
-//(CREDIT TO KENNETH SINDER FOR IMPLEMENTING THIS FUNCTION)
-
-//NUMBERS--------------------------------------------------------------------
-
 char num0[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {1, 1, 1, 1, 1, 1},
-  {1, 0, 0, 0, 0, 1},
-  {1, 0, 0, 0, 0, 1},
-  {1, 0, 0, 0, 0, 1},
-  {1, 1, 1, 1, 1, 1}};
-  
+{{0, 0, 0, 0, 0, 0},{1, 1, 1, 1, 1, 1},{1, 0, 0, 0, 0, 1},{1, 0, 0, 0, 0, 1},{1, 0, 0, 0, 0, 1},{1, 1, 1, 1, 1, 1}};
 char num1[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {01, 0, 01, 1,0 , 0},
-  {01, 0, 0, 01, 1,0 },
-  {01, 01, 01, 01, 01, 01},
-  {01, 0, 0, 0, 0, 0},
-  {01, 0, 0, 0, 0, 0}};
-  
- char num2[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {01, 0, 0, 01, 01, 0},
-  {01, 01, 0, 0, 0, 01},
-  {01, 0, 01, 0, 0, 01},
-  {01, 0, 0, 01, 0, 01},
-  {01, 0, 0, 0, 01, 0}};
-  
+{{0, 0, 0, 0, 0, 0},{01, 0, 01, 1,0 , 0},{01, 0, 0, 01, 1,0 },{01, 01, 01, 01, 01, 01},{01, 0, 0, 0, 0, 0},{01, 0, 0, 0, 0, 0}};
+char num2[][6] = 
+{{0, 0, 0, 0, 0, 0},{01, 0, 0, 01, 01, 0},{01, 01, 0, 0, 0, 01},{01, 0, 01, 0, 0, 01},{01, 0, 0, 01, 0, 01},{01, 0, 0, 0, 01, 0}};
 char num3[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {0, 0, 0, 0, 01, 0},
-  {0, 01, 0, 0, 0, 01},
-  {01, 0, 0, 01, 0, 01},
-  {01, 0, 0, 01, 0, 01},
-  {0, 01, 01, 01, 01, 0}};
-  
+{{0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 01, 0},{0, 01, 0, 0, 0, 01},{01, 0, 0, 01, 0, 01},{01, 0, 0, 01, 0, 01},{0, 01, 01, 01, 01, 0}};
 char num4[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {0, 0, 0, 01, 0, 0},
-  {0, 0, 0, 01, 01, 0},
-  {0, 0, 0, 01, 0, 01},
-  {01, 01, 01, 01, 01, 01},
-  {0, 0, 0, 01, 0, 0}};
-  
+{{0, 0, 0, 0, 0, 0},{0, 0, 0, 01, 0, 0},{0, 0, 0, 01, 01, 0},{0, 0, 0, 01, 0, 01},{01, 01, 01, 01, 01, 01},{0, 0, 0, 01, 0, 0}};
 char num5[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {0, 1, 0, 1, 1, 1},
-  {1, 0, 0, 1, 0, 1},
-  {1, 0, 0, 1, 0, 1},
-  {1, 0, 0, 1, 0, 1},
-  {0, 1, 1, 0, 0, 1}};
-
+{{0, 0, 0, 0, 0, 0},{0, 1, 0, 1, 1, 1},{1, 0, 0, 1, 0, 1},{1, 0, 0, 1, 0, 1},{1, 0, 0, 1, 0, 1},{0, 1, 1, 0, 0, 1}};
 char num6[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {0, 1, 1, 1, 1, 0},
-  {1, 0, 1, 0, 0, 1},
-  {1, 0, 0, 1, 0, 1},
-  {1, 0, 0, 1, 0, 1},
-  {0, 1, 1, 0, 0, 0}};
-
+{{0, 0, 0, 0, 0, 0},{0, 1, 1, 1, 1, 0},{1, 0, 1, 0, 0, 1},{1, 0, 0, 1, 0, 1},{1, 0, 0, 1, 0, 1},{0, 1, 1, 0, 0, 0}};
 char num7[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {1, 0, 0, 0, 0, 1},
-  {0, 1, 0, 0, 0, 1},
-  {0, 0, 1, 0, 0, 1},
-  {0, 0, 0, 1, 0, 1},
-  {0, 0, 0, 0, 1, 1}};
-
+{{0, 0, 0, 0, 0, 0},{1, 0, 0, 0, 0, 1},{0, 1, 0, 0, 0, 1},{0, 0, 1, 0, 0, 1},{0, 0, 0, 1, 0, 1},{0, 0, 0, 0, 1, 1}};
 char num8[][6]=
-{
-  {0, 0, 0, 0, 0, 0},
-  {0, 1, 1, 0, 1, 0},
-  {1, 0, 0, 1, 0, 1},
-  {1, 0, 0, 1, 0, 1},
-  {1, 0, 0, 1, 0, 1},
-  {0, 1, 1, 0, 1, 0}}; 
-
+{{0, 0, 0, 0, 0, 0},{0, 1, 1, 0, 1, 0},{1, 0, 0, 1, 0, 1},{1, 0, 0, 1, 0, 1},{1, 0, 0, 1, 0, 1},{0, 1, 1, 0, 1, 0}}; 
 char num9[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {1, 0, 0, 1, 1, 0},
-  {1, 0, 01, 0, 0, 1},
-  {1, 0, 01, 0, 0, 1},
-  {1, 0, 0, 1, 0, 1},
-  {0, 1, 1, 1, 1, 0}};
+{{0, 0, 0, 0, 0, 0},{1, 0, 0, 1, 1, 0},{1, 0, 01, 0, 0, 1},{1, 0, 01, 0, 0, 1},{1, 0, 0, 1, 0, 1},{0, 1, 1, 1, 1, 0}};
   
 //ARROWS--------------------------------------------------------------------
 
 //LEFT
 char bmp[][6] = 
-{
-  {0, 0, 1, 1, 0, 0},
-  {0, 1, 1, 1, 1, 0},
-  {1, 0, 1, 1, 0, 1},
-  {0, 0, 1, 1, 0, 0},
-  {0, 0, 1, 1, 0, 0},
-  {0, 0, 1, 1, 0, 0}};
+{{0, 0, 1, 1, 0, 0},{0, 1, 1, 1, 1, 0},{1, 0, 1, 1, 0, 1},{0, 0, 1, 1, 0, 0},{0, 0, 1, 1, 0, 0},{0, 0, 1, 1, 0, 0}};
 //RIGHT
 char bmp4[][6] = 
-{
-  {0, 0, 1, 1, 0, 0},
-  {0, 0, 1, 1, 0, 0},
-  {0, 0, 1, 1, 0, 0},
-  {0, 0, 1, 1, 0, 0},
-  {1, 0, 1, 1, 0, 1},
-  {0, 1, 1, 1, 1, 0}};
+{{0, 0, 1, 1, 0, 0},{0, 0, 1, 1, 0, 0},{0, 0, 1, 1, 0, 0},{0, 0, 1, 1, 0, 0},{1, 0, 1, 1, 0, 1},{0, 1, 1, 1, 1, 0}};
 //DOWN
 char bmp2[][6] = 
-{
-  {0, 0, 1, 0, 0, 0},
-  {0, 1, 0, 0, 0, 0},
-  {1, 1, 1, 1, 1, 1},
-  {1, 1, 1, 1, 1, 1},
-  {0, 1, 0, 0, 0, 0},
-  {0, 0, 1, 0, 0, 0}};
+{{0, 0, 1, 0, 0, 0},{0, 1, 0, 0, 0, 0},{1, 1, 1, 1, 1, 1},{1, 1, 1, 1, 1, 1},{0, 1, 0, 0, 0, 0},{0, 0, 1, 0, 0, 0}};
 //UP
 char bmp3[][6] = 
-{
-  {0, 0, 0, 1, 0, 0},
-  {0, 0, 0, 0, 1, 0},
-  {1, 1, 1, 1, 1, 1},
-  {1, 1, 1, 1, 1, 1},
-  {0, 0, 0, 0, 1, 0},
-  {0, 0, 0, 1, 0, 0}};
-  
+{{0, 0, 0, 1, 0, 0},{0, 0, 0, 0, 1, 0},{1, 1, 1, 1, 1, 1},{1, 1, 1, 1, 1, 1},{0, 0, 0, 0, 1, 0},{0, 0, 0, 1, 0, 0}};
+
 //LETTERS--------------------------------------------------------------------
- 
 char A[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {01, 01, 01, 0, 0, 0},
-  {0, 01, 0, 01, 01, 0},
-  {0, 01, 0, 0, 0, 01},
-  {0, 01, 0, 01, 01, 0},
-  {01, 01, 01, 0, 0, 0}}; 
-  
+{{0, 0, 0, 0, 0, 0},{01, 01, 01, 0, 0, 0},{0, 01, 0, 01, 01, 0},{0, 01, 0, 0, 0, 01},{0, 01, 0, 01, 01, 0},{01, 01, 01, 0, 0, 0}}; 
 char B[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {01, 01, 01, 01, 01, 01},
-  {01, 0, 0, 01, 0, 01},
-  {01, 0, 0, 01, 0, 01},
-  {01, 0, 0, 01, 0, 01},
-  {0, 01, 01, 0, 01, 0}};
-  
+{{0, 0, 0, 0, 0, 0},{01, 01, 01, 01, 01, 01},{01, 0, 0, 01, 0, 01},{01, 0, 0, 01, 0, 01},{01, 0, 0, 01, 0, 01},{0, 01, 01, 0, 01, 0}};
 char C[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {0, 01, 01, 01, 01, 0},
-  {01, 0, 0, 0, 0, 01},
-  {01, 0, 0, 0, 0, 01},
-  {01, 0, 0, 0, 0, 01},
-  {0, 01, 0, 0, 01, 0}};
-  
+{{0, 0, 0, 0, 0, 0},{0, 01, 01, 01, 01, 0},{01, 0, 0, 0, 0, 01},{01, 0, 0, 0, 0, 01},{01, 0, 0, 0, 0, 01},{0, 01, 0, 0, 01, 0}};
 char D[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {01, 01, 01, 01, 01, 01},
-  {01, 0, 0, 0, 0, 01},
-  {01, 0, 0, 0, 0, 01},
-  {01, 0, 0, 0, 0, 01},
-  {0, 01, 01, 01, 01, 0}};
-  
+{{0, 0, 0, 0, 0, 0},{01, 01, 01, 01, 01, 01},{01, 0, 0, 0, 0, 01},{01, 0, 0, 0, 0, 01},{01, 0, 0, 0, 0, 01},{0, 01, 01, 01, 01, 0}};
 char E[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {01, 01, 01, 01, 01, 01},
-  {01, 0, 0, 01, 0, 01},
-  {01, 0, 0, 01, 0, 01},
-  {01, 0, 0, 01, 0, 01},
-  {01, 0, 0, 01, 0, 01}}; 
-  
+{{0, 0, 0, 0, 0, 0},{01, 01, 01, 01, 01, 01},{01, 0, 0, 01, 0, 01},{01, 0, 0, 01, 0, 01},{01, 0, 0, 01, 0, 01},{01, 0, 0, 01, 0, 01}}; 
 char F[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {01, 01, 01, 01, 01, 01},
-  {0, 0, 0, 01, 0, 01},
-  {0, 0, 0, 01, 0, 01},
-  {0, 0, 0, 01, 0, 01},
-  {0, 0, 0, 01, 0, 01}};
-  
+{{0, 0, 0, 0, 0, 0},{01, 01, 01, 01, 01, 01},{0, 0, 0, 01, 0, 01},{0, 0, 0, 01, 0, 01},{0, 0, 0, 01, 0, 01},{0, 0, 0, 01, 0, 01}};
 char G[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {0, 01, 01, 01, 01, 0},
-  {01, 0, 0, 0, 0, 01},
-  {01, 0, 0, 0, 0, 01},
-  {01, 0, 01, 0, 0, 01},
-  {0, 01, 01, 0, 01, 0}};
-  
+{{0, 0, 0, 0, 0, 0},{0, 01, 01, 01, 01, 0},{01, 0, 0, 0, 0, 01},{01, 0, 0, 0, 0, 01},{01, 0, 01, 0, 0, 01},{0, 01, 01, 0, 01, 0}};
 char H[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {1, 1, 1, 1, 1, 1},
-  {0, 0, 1, 1, 0, 0},
-  {0, 0, 1, 1, 0, 0},
-  {0, 0, 1, 1, 0, 0},
-  {1, 1, 1, 1, 1, 1}};
-  
+{{0, 0, 0, 0, 0, 0},{1, 1, 1, 1, 1, 1},{0, 0, 1, 1, 0, 0},{0, 0, 1, 1, 0, 0},{0, 0, 1, 1, 0, 0},{1, 1, 1, 1, 1, 1}};
 char I[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {01, 01, 0, 0, 01, 01},
-  {01, 0, 0, 0, 0, 01},
-  {01, 01, 01, 01, 01, 01},
-  {01, 0, 0, 0, 0, 01},
-  {01, 01, 0, 0, 01, 01}};
-  
+{{0, 0, 0, 0, 0, 0},{01, 01, 0, 0, 01, 01},{01, 0, 0, 0, 0, 01},{01, 01, 01, 01, 01, 01},{01, 0, 0, 0, 0, 01},{01, 01, 0, 0, 01, 01}};
 char L[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {01, 01, 01, 01, 01, 01},
-  {01, 01, 01, 01, 01, 01},
-  {01, 01, 0, 0, 0, 0},
-  {01, 01, 0, 0, 0, 0},
-  {01, 01, 0, 0, 0, 0}};
-  
+{{0, 0, 0, 0, 0, 0},{01, 01, 01, 01, 01, 01},{01, 01, 01, 01, 01, 01},{01, 01, 0, 0, 0, 0},{01, 01, 0, 0, 0, 0},{01, 01, 0, 0, 0, 0}};
 char M[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {01, 01, 01, 01, 01, 01},
-  {0, 0, 0, 0, 01, 0},
-  {0, 0, 0, 01, 0, 0},
-  {0, 0, 0, 0, 01, 0},
-  {01, 01, 01, 01, 01, 01}};
-  
+{{0, 0, 0, 0, 0, 0},{01, 01, 01, 01, 01, 01},{0, 0, 0, 0, 01, 0},{0, 0, 0, 01, 0, 0},{0, 0, 0, 0, 01, 0},{01, 01, 01, 01, 01, 01}};
 char N[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {01, 01, 01, 01, 01, 01},
-  {0, 0, 0, 0, 01, 01},
-  {0, 0, 01, 01, 01, 0},
-  {0, 01, 01, 0, 0, 0},
-  {01, 01, 01, 01, 01, 01}};
-  
+{{0, 0, 0, 0, 0, 0},{01, 01, 01, 01, 01, 01},{0, 0, 0, 0, 01, 01},{0, 0, 01, 01, 01, 0},{0, 01, 01, 0, 0, 0},{01, 01, 01, 01, 01, 01}};
 char O[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {0, 01, 01, 01, 01, 0},
-  {01, 0, 0, 0, 0, 01},
-  {01, 0, 0, 0, 0, 01},
-  {01, 0, 0, 0, 0, 01},
-  {0, 01, 01, 01, 01, 0}};
-  
-  
+{{0, 0, 0, 0, 0, 0},{0, 01, 01, 01, 01, 0},{01, 0, 0, 0, 0, 01},{01, 0, 0, 0, 0, 01},{01, 0, 0, 0, 0, 01},{0, 01, 01, 01, 01, 0}};
 char P[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {1, 1, 1, 1, 1, 1},
-  {0, 0, 01, 0, 0, 1},
-  {0, 0, 01, 0, 0, 1},
-  {0, 0, 01, 0, 0, 1},
-  {0, 0, 0, 1, 1, 0}};
-  
+{{0, 0, 0, 0, 0, 0},{1, 1, 1, 1, 1, 1},{0, 0, 01, 0, 0, 1},{0, 0, 01, 0, 0, 1},{0, 0, 01, 0, 0, 1},{0, 0, 0, 1, 1, 0}};
 char R[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {01, 01, 01, 01, 01, 01},
-  {0, 0, 01, 01, 0, 01},
-  {0, 0, 01, 01, 0, 01},
-  {0, 01, 0, 01, 0, 01},
-  {01, 0, 0, 0, 01, 0}};
-  
+{{0, 0, 0, 0, 0, 0},{01, 01, 01, 01, 01, 01},{0, 0, 01, 01, 0, 01},{0, 0, 01, 01, 0, 01},{0, 01, 0, 01, 0, 01},{01, 0, 0, 0, 01, 0}};
 char S[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {0, 01, 0, 01, 01, 0},
-  {01, 0, 01, 0, 0, 01},
-  {01, 0, 01, 0, 0, 01},
-  {01, 0, 01, 0, 0, 01},
-  {0, 01, 0, 0, 01, 0}};
-  
+{{0, 0, 0, 0, 0, 0},{0, 01, 0, 01, 01, 0},{01, 0, 01, 0, 0, 01},{01, 0, 01, 0, 0, 01},{01, 0, 01, 0, 0, 01},{0, 01, 0, 0, 01, 0}};
 char T[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {0, 0, 0, 0, 01, 01},
-  {0, 0, 0, 0, 0, 01},
-  {01, 01, 01, 01, 01, 01},
-  {0, 0, 0, 0, 0, 01},
-  {0, 0, 0, 0, 01, 01}};
-  
+{{0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 01, 01},{0, 0, 0, 0, 0, 01},{01, 01, 01, 01, 01, 01},{0, 0, 0, 0, 0, 01},{0, 0, 0, 0, 01, 01}};
 char U[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {0, 01, 01, 01, 01, 01},
-  {01, 0, 0, 0, 0, 0},
-  {01, 0, 0, 0, 0, 0},
-  {01, 0, 0, 0, 0, 0},
-  {0, 01, 01, 01, 01, 01}};
-
-
+{{0, 0, 0, 0, 0, 0},{0, 01, 01, 01, 01, 01},{01, 0, 0, 0, 0, 0},{01, 0, 0, 0, 0, 0},{01, 0, 0, 0, 0, 0},{0, 01, 01, 01, 01, 01}};
 char V[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {0, 0, 0, 01, 01, 01},
-  {0, 01, 01, 01,  0, 0},
-  {1, 01, 0,   0 , 0, 0},
-  {0, 01, 01, 01, 0, 0},
-  {0, 0, 0, 01, 01, 01}};
-  
+{{0, 0, 0, 0, 0, 0},{0, 0, 0, 01, 01, 01},{0, 01, 01, 01, 0, 0},{1, 01, 0, 0 , 0, 0},{0, 01, 01, 01, 0, 0},{0, 0, 0, 01, 01, 01}};
 char Y[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {0, 0, 0, 0, 01, 01},
-  {0, 0, 0, 01, 0, 0},
-  {01, 01, 01, 0, 0, 0},
-  {0, 0, 0, 01, 0, 0},
-  {0, 0, 0, 0, 01, 01}};
-  
+{{0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 01, 01},{0, 0, 0, 01, 0, 0},{01, 01, 01, 0, 0, 0},{0, 0, 0, 01, 0, 0},{0, 0, 0, 0, 01, 01}};
 char COLON[][6] = 
-{
-  {01, 01, 0, 0, 01, 01},
-  {01, 01, 0, 0, 01, 01},
-  {0, 0, 0, 0, 0, 0},
-  {0, 0, 0, 0, 0, 0},
-  {0, 0, 0, 0, 0, 0},
-  {0, 0, 0, 0, 0, 0}};
-  
+{{01, 01, 0, 0, 01, 01},{01, 01, 0, 0, 01, 01},{0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0}};
 char Tinvert[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {01, 01, 01, 01, 01, 01},
-  {01, 0, 01, 01, 0, 01},
-  {0, 0, 01, 01, 0, 0},
-  {0, 0, 01, 01, 0, 0},
-  {0, 01, 01, 01, 01, 0}};
-  
+{{0, 0, 0, 0, 0, 0},{01, 01, 01, 01, 01, 01},{01, 0, 01, 01, 0, 01},{0, 0, 01, 01, 0, 0},{0, 0, 01, 01, 0, 0},{0, 01, 01, 01, 01, 0}};
 char guideE[][6] = 
-{
-  {0, 0, 0, 0, 0, 0},
-  {01, 01, 01, 01, 01, 01},
-  {01, 0, 0, 01, 0, 01},
-  {01, 0, 0, 01, 0, 01},
-  {01, 0, 0, 01, 0, 01},
-  {0, 0, 0, 0, 0, 0}};
+{{0, 0, 0, 0, 0, 0},{01, 01, 01, 01, 01, 01},{01, 0, 0, 01, 0, 01},{01, 0, 0, 01, 0, 01},{01, 0, 0, 01, 0, 01},{0, 0, 0, 0, 0, 0}};
   
 // ---------------------------------------------------------------------------
 // Function that converts the 2D array of bits into displayable images on the screen
-
-// (CREDIT TO KENNETH SINDER FOR CREATING THIS FUNCTION)
 char* formattedBitmap(char* input, unsigned int width, unsigned int height){
   unsigned int h = ceil(height / 8.0);
   char *output = (char*)calloc(h * width, sizeof(char));
@@ -392,9 +110,6 @@ char* formattedBitmap(char* input, unsigned int width, unsigned int height){
   }
   return output;
 }
-
-// Formatted, displayable bitmaps on the screen
-// (CREDIT TO KENNETH SINDER FOR THIS FUNCTION)
 
 // Bitmaps of arrows
 char* left = formattedBitmap((char*)bmp, bitmapWidth, bitmapHeight);
@@ -439,7 +154,7 @@ char* char7 = formattedBitmap((char*)num7, bitmapWidth, bitmapHeight);
 char* char8 = formattedBitmap((char*)num8, bitmapWidth, bitmapHeight);
 char* char9 = formattedBitmap((char*)num9, bitmapWidth, bitmapHeight);
 
-// ---------------------------------------------------------------------------//
+char* charArr[] = { char0, char1, char2, char3, char4, char5, char6, char7, char8, char9 };
                  
 // Specification of positions of arrows on the screen 
 unsigned int x = 0;
@@ -551,7 +266,6 @@ char 	rgchReadAcclY[] = {0, 0, 0};
 */
 void setup(){
   // Helper function found in our functions.cpp
-  // (CREDITS TO KENNETH SINDER FOR COMPILING THE FUNCTIONS TOGETHER)
   deviceInit();
   
   // Resets the screen
@@ -565,7 +279,7 @@ void setup(){
 * post: function allows user to choose between playing the game and returning to the home screen
 */
 void loop(){
-  if (play == false) {
+  if (!play) {
     mainMenu();
   } 
   else {
@@ -604,7 +318,7 @@ void playGame(){
    drawNew[0] = 0; //Resets the counter
  }
 
-  gameText();
+ gameText();
  
  if(iterationCount >=60){//This statement is used to initially start printing the second arrow after 60 loop iterations
    if(drawNew[1] >= 120) {//Draws a new arrow after 120 loop iterations
@@ -636,78 +350,19 @@ void playGame(){
   drawNew[0]++; //Adds counter for new arrow 1
   
   //switch statement to update/redraw number of lives on OLED
-  switch(lives) {
-         case 9:
-         oledDraw(char9, textRow3, char4Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 8:
-         oledDraw(char8, textRow3, char4Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 7:
-         oledDraw(char7, textRow3, char4Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 6:
-         oledDraw(char6, textRow3, char4Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 5:
-         oledDraw(char5, textRow3, char4Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 4:
-         oledDraw(char4, textRow3, char4Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 3:
-         oledDraw(char3, textRow3, char4Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 2:
-         oledDraw(char2, textRow3, char4Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 1:
-         oledDraw(char1, textRow3, char4Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 0:
-         oledDraw(char0, textRow3, char4Y+3, bitmapWidth, bitmapHeight);
-         OrbitOledUpdate();
+  oledDraw(charArr[lives], textRow3, char4Y+3, bitmapWidth, bitmapHeight);
+  
+  if (lives == 0){
+    OrbitOledUpdate();
          oledReset();
          endGame= true; //proceed to "game over" when lives reach 0
-         break;
-         default:
-         oledDraw(char1, textRow3, char3Y+3, bitmapWidth, bitmapHeight);
-         oledDraw(char0, textRow3, char4Y+3, bitmapWidth, bitmapHeight);
-         break;
   }
  
-  if(i <5) //Cases that change the level that is displayed on the screen
-    oledDraw(char1, textRow2, char4Y+3, bitmapWidth, bitmapHeight);
-  else if(i<10)
-    oledDraw(char2, textRow2, char4Y+3, bitmapWidth, bitmapHeight);
-  else if(i <15)
-    oledDraw(char3, textRow2, char4Y+3, bitmapWidth, bitmapHeight);
-  else if(i <20)
-    oledDraw(char4, textRow2, char4Y+3, bitmapWidth, bitmapHeight);
-  else if(i <25)
-    oledDraw(char5, textRow2, char4Y+3, bitmapWidth, bitmapHeight);
-  else if(i <30)
-    oledDraw(char6, textRow2, char4Y+3, bitmapWidth, bitmapHeight);
-  else 
-    oledDraw(char7, textRow2, char4Y+3, bitmapWidth, bitmapHeight);
+  oledDraw(char1, textRow2, char4Y+3, bitmapWidth, bitmapHeight);
     
   userInputFunction(drawNew[0],r,drawNew[1],d); //Determines the user input
 
-  // If statements to change between the delay values (lower values equate to faster falling arrows)
-  if(i <5)
-    delay(10);
-  else if(i<10)
-    delay(7);
-  else if(i <15)
-    delay(4);
-  else if(i< 20)
-    delay(1);
-  else if(i< 25)
-    delayMicroseconds(500);
-  else if(i<30)
-    delayMicroseconds(200);
-  else
-    delayMicroseconds(25);
+  delay(1);
   
   // Resets and updates the screen
   OrbitOledUpdate();
@@ -747,73 +402,48 @@ void userInputFunction(int position,int orientation, int position2, int orientat
   coolDown++; //Increases the cooldown   
    if(coolDown >=45){ //Whenever cooldown is greater than 45, the user can tilt again
      //UP 2
+     coolDown = 0;
      if(dataY < -113 ) { //Tilt forward
-       coolDown =0; //Resets cooldown
        if(orientation ==2 && position >epsilon || orientation2 ==2 && position2 >epsilon){ //If "hit", turn on the green LEDS
-         hitLED();
-         score++;
+         didHit();
        }
        else{ //Else "miss", turn on the red LED
-         digitalWrite(RED_LED,HIGH);
-         tiltTimer =10;
-         missHit=1;
-         lives--;
+         didMiss();
        }
        fDirY = true;
      }
-    
      //DOWN 1
      else if(dataY > 113 ) { //Tilt backward
-       coolDown =0; //Resets cooldown
        if(orientation ==1 && position >epsilon||orientation2 ==1 && position2 >epsilon){ //If "hit", turn on the green LEDS
-         hitLED();
-         score++;
+         didHit();
        }
        else{ //Else "miss", turn on the red LED
-         digitalWrite(RED_LED,HIGH);
-         tiltTimer =10;
-         missHit=1;
-         lives--;
+         didMiss();
        }
        fDirY = false;
      }
      else;
-     
      //LEFT 0
      if(dataX < -113 ) { //Tilt the left
-       coolDown =0; //Resets cooldown
        if(orientation ==0 && position >epsilon ||orientation2 ==0 && position2 >epsilon){ //If "hit", turn on the green LEDS
-         hitLED();
-         score++;
+         didHit();
        }
        else{ //Else "miss", turn on red LED
-         digitalWrite(RED_LED,HIGH);
-         tiltTimer =10;
-         missHit=1;
-         lives--;
+         didMiss();
        }
        fDirX = true;
      }
-      
      //RIGHT 3
      else if(dataX > 113 ) { //Tilt to the right
-       coolDown = 0; //Resets cooldown
        if(orientation ==3 && position >epsilon||orientation2 ==3 && position2 >epsilon){ //If "hit", turn on the green LEDS
-         hitLED();
-         score++;
+          didHit();
        }
        else{ //Else "miss", turn on red LED
-         digitalWrite(RED_LED,HIGH);
-         tiltTimer =10;
-         missHit=1;
-         lives--;
+         didMiss();
        }
        fDirX = false;
- 
      }
-     else;
     }
-    
     //If the user misses an arrow
     if(position ==120 || position2==120){
       if(passFail ==0&& missHit!=1){ //Turns on the LED if they did not attempt to tilt the correct orientation
@@ -824,7 +454,6 @@ void userInputFunction(int position,int orientation, int position2, int orientat
       passFail=0;
       missHit=0;
     }
-     
     tiltTimer --;
     
     //Turns off the LED after 10 loop iterations and prepares for the next tilt
@@ -836,7 +465,16 @@ void userInputFunction(int position,int orientation, int position2, int orientat
       GPIOPinWrite(LED4Port, LED4, LOW);
     }
 }
-
+void didHit(){
+  hitLED();
+  score++;
+}
+void didMiss(){
+  digitalWrite(RED_LED,HIGH);
+  tiltTimer =10;
+  missHit=1;
+  lives--;
+}
 /*
 * Function that turns on the green LEDs whenever the user correctly hits
 * pre: user tilts properly
@@ -859,6 +497,7 @@ void hitLED(){
 
 //draw the text for the game over screen on OLED 
 void gameOverMenu(){
+  int newScore = 0;
   oledDraw(charT, textRow1, char1Y+3, bitmapWidth, bitmapHeight); //draw the word TILT
   oledDraw(charI, textRow1, char2Y+3, bitmapWidth, bitmapHeight);
   oledDraw(charL, textRow1, char3Y+3, bitmapWidth, bitmapHeight);
@@ -923,78 +562,11 @@ void gameOverMenu(){
   oledDraw(right, x4, y4, bitmapWidth, bitmapHeight);
   
   //switch statement to display score on OLED in game over screen (rightmost digit)
-  switch(score/10) {
-         case 9:
-         oledDraw(char9, textRow8, char2Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 8:
-         oledDraw(char8, textRow8, char2Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 7:
-         oledDraw(char7, textRow8, char2Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 6:
-         oledDraw(char6, textRow8, char2Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 5:
-         oledDraw(char5, textRow8, char2Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 4:
-         oledDraw(char4, textRow8, char2Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 3:
-         oledDraw(char3, textRow8, char2Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 2:
-         oledDraw(char2, textRow8, char2Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 1:
-         oledDraw(char1, textRow8, char2Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 0:
-         oledDraw(char0, textRow8, char2Y+3, bitmapWidth, bitmapHeight);
-         break;
-         default:
-         oledDraw(char0, textRow8, char2Y+3, bitmapWidth, bitmapHeight);
-         break;
-  }
+  newScore = score/10;
+  oledDraw(charArr[newScore], textRow8, char2Y+3, bitmapWidth, bitmapHeight);
   
-  //switch statement to display score on OLED in game over screen (left from rightmost digit)
-  switch(score - (score/10)*10) {
-         case 9:
-         oledDraw(char9, textRow8, char3Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 8:
-         oledDraw(char8, textRow8, char3Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 7:
-         oledDraw(char7, textRow8, char3Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 6:
-         oledDraw(char6, textRow8, char3Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 5:
-         oledDraw(char5, textRow8, char3Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 4:
-         oledDraw(char4, textRow8, char3Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 3:
-         oledDraw(char3, textRow8, char3Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 2:
-         oledDraw(char2, textRow8, char3Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 1:
-         oledDraw(char1, textRow8, char3Y+3, bitmapWidth, bitmapHeight);
-         break;
-         case 0:
-         oledDraw(char0, textRow8, char3Y+3, bitmapWidth, bitmapHeight);
-         break;
-         default:
-         oledDraw(char0, textRow8, char3Y+3, bitmapWidth, bitmapHeight);
-         break;
-  }
+  newScore = score - (score/10)*10;
+  oledDraw(charArr[newScore], textRow8, char3Y+3, bitmapWidth, bitmapHeight);
   
   OrbitOledUpdate();
   oledReset();
@@ -1203,4 +775,3 @@ void gameSetup(){
     rgchWriteAcclX[1] = 1 << 3;	// sets Accl in measurement mode
     I2CGenTransmit(rgchWriteAcclX, 1, WRITE, ACCLADDR); //Transmits the data of the accelerometer
 }
-
